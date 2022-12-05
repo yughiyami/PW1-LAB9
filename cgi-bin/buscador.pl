@@ -1,3 +1,5 @@
+
+#!/usr/bin/perl
 use strict;
 use warnings;
 use CGI;
@@ -142,6 +144,7 @@ sub comparar{
 }
 ##imprimirlo en  html
 print $q->header("text/html");
+print "Content-type:text/html\n\n";
 print <<BLOCK;
 <!DOCTYPE html>
 <html lang="es">
