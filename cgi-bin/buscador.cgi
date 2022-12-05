@@ -1,18 +1,17 @@
-#!/usr/bin/perl
 use strict;
 use warnings;
 use CGI;
-
-my $nombre =param('nombre');
-my $periodo= param('periodo');
-my $departamento = param('departamento');
-my $denominacion =param('denominacion');
+my $q=CGI->new();
+my $nombre =$q-> param('nombre');
+my $periodo= $q->param('periodo');
+my $departamento = $q->param('departamento');
+my $denominacion =$q->param('denominacion');
 my $nombre_Mayusculas =uc($nombre);
 my $periodo_Mayusculas=uc($periodo);
-my $departamente_Mayusculas=uc($departamento);
+my $departamento_Mayusculas=uc($departamento);
 my $denominacion_Mayusculas=uc($denominacion); 
 ##abrir
-open (ARCHIVO,'<','Programas_de_Universidades.csv');
+open(ARCHIVO,'<','Programas_de_Universidades.csv');
 ##variables para guardar datos
 
 my $i=0;
@@ -52,7 +51,7 @@ while (<ARCHIVO>)
 ##busqueda de los numeros 
 my @numero1=&comparar($nombre_Mayusculas,$i,@NOMBRE);
 my @numero2=&comparar($periodo_Mayusculas,$i,@PERIODO_LICENCIAMIENTO);
-my @numero3=&comparar($departamente_Mayusculas,$i,@DEPARTAMENTO_LOCAL);
+my @numero3=&comparar($departamento_Mayusculas,$i,@DEPARTAMENTO_LOCAL);
 my @numero4=&comparar($denominacion_Mayusculas, $i,@DENOMINACION_PROGRAMA);
 my $q=1;
 
@@ -68,29 +67,29 @@ my $tabla='<tabla style="width:100%">';
 my $posicion=0;
 $tabla=$tabla."</tr>";
          $tabla=$tabla."</tr>";
-       $tabla=$tabla."<th><h6>CODIGO_ENTIDAD</h6></th>";
+       $tabla=$tabla."<th><h6>CODIGO ENTIDAD</h6></th>";
        $tabla=$tabla."<th><h6>NOMBRE</h6></th>";
-       $tabla=$tabla."<th><h6>TIPO_GESTION</h6></th>";
-       $tabla=$tabla."<th><h6>ESTADO_LICENCIAMIENTO</h6></th>";
-       $tabla=$tabla."<th><h6>PERIODO_LICENCIAMIENTO</h6></th>";
-       $tabla=$tabla."<th><h6>CODIGO_FILIAL</h6></th>";
-       $tabla=$tabla."<th><h6>NOMBRE_FILIAL</h6></th>";
-       $tabla=$tabla."<th><h6>DEPARTAMENTO_FILIAL</h6></th>";
-       $tabla=$tabla."<th><h6>PROVINCIA_FILIAL</h6></th>";
-       $tabla=$tabla."<th><h6>CODIGO_LOCAL</h6></th>";
-       $tabla=$tabla."<th><h6>DEPARTAMENTO_LOCAL</h6></th>";
-       $tabla=$tabla."<th><h6>PROVINCIA_LOCAL</h6></th>";
-       $tabla=$tabla."<th><h6>DISTRITO_LOCAL</h6></th>";
-       $tabla=$tabla."<th><h6>LATITUD_UBICACION</h6></th>";
-       $tabla=$tabla."<th><h6>LONGITUD_UBICACION</h6></th>";
-       $tabla=$tabla."<th><h6>TIPO_AUTORIZACION_LOCAL</h6></th>";
-       $tabla=$tabla."<th><h6>DENOMINACION_PROGRAMA</h6></th>";
-       $tabla=$tabla."<th><h6>TIPO_NIVEL_ACADEMICO</h6></th>";
-       $tabla=$tabla."<th><h6>NIVEL_ACADEMICO</h6></th>";
-       $tabla=$tabla."<th><h6>CODIGO_CLASE_PROGRAMA_N2</h6></th>";
-       $tabla=$tabla."<th><h6>NOMBRE_CLASE_PROGRAMA_N2</h6></th>";
-       $tabla=$tabla."<th><h6>TIPO_AUTORIZACION_PROGRAMA</h6></th>";
-       $tabla=$tabla."<th><h6>TIPO_AUTORIZACION_PROGRAMA_LOCAL</h6></th>";
+       $tabla=$tabla."<th><h6>TIPO GESTION</h6></th>";
+       $tabla=$tabla."<th><h6>ESTADO LICENCIAMIENTO</h6></th>";
+       $tabla=$tabla."<th><h6>PERIODO LICENCIAMIENTO</h6></th>";
+       $tabla=$tabla."<th><h6>CODIGO FILIAL</h6></th>";
+       $tabla=$tabla."<th><h6>NOMBRE FILIAL</h6></th>";
+       $tabla=$tabla."<th><h6>DEPARTAMENTO FILIAL</h6></th>";
+       $tabla=$tabla."<th><h6>PROVINCIA FILIAL</h6></th>";
+       $tabla=$tabla."<th><h6>CODIGO LOCAL</h6></th>";
+       $tabla=$tabla."<th><h6>DEPARTAMENTO LOCAL</h6></th>";
+       $tabla=$tabla."<th><h6>PROVINCIA LOCAL</h6></th>";
+       $tabla=$tabla."<th><h6>DISTRITO LOCAL</h6></th>";
+       $tabla=$tabla."<th><h6>LATITUD UBICACION</h6></th>";
+       $tabla=$tabla."<th><h6>LONGITUD UBICACION</h6></th>";
+       $tabla=$tabla."<th><h6>TIPO AUTORIZACION LOCAL</h6></th>";
+       $tabla=$tabla."<th><h6>DENOMINACION PROGRAMA</h6></th>";
+       $tabla=$tabla."<th><h6>TIPO NIVEL ACADEMICO</h6></th>";
+       $tabla=$tabla."<th><h6>NIVEL ACADEMICO</h6></th>";
+       $tabla=$tabla."<th><h6>CODIGO CLASE PROGRAMA N2</h6></th>";
+       $tabla=$tabla."<th><h6>NOMBRE CLASE PROGRAMA N2</h6></th>";
+       $tabla=$tabla."<th><h6>TIPO AUTORIZACION PROGRAMA</h6></th>";
+       $tabla=$tabla."<th><h6>TIPO AUTORIZACION PROGRAMA LOCAL</h6></th>";
        $tabla=$tabla."</tr>";
 
 
@@ -142,9 +141,10 @@ sub comparar{
    return @numeros;
 }
 ##imprimirlo en  html
-print "content-type: text/html\n\n"
-print <<ENDHTML;
-<html>
+print $q->header("text/html");
+print <<BLOCK;
+<!DOCTYPE html>
+<html lang="es">
   <head>
     <title>B.Universidades</title>
     <meta charset="UTF-8">
@@ -158,23 +158,21 @@ print <<ENDHTML;
       <div>
       <h1 class="header">Buscador de universidades</h1>
       </div>
-      <form method=GET action="cgi-bin/buscador.pl">
+      <form method=GET action="cgi-bin/buscador.cgi">
          <h4>NOMBRE DE LA UNIVERSIDAD</h4> <input type=text name=nombre size=100 maxlength=255 value="$nombre" style="height: 30px;">
-         <h4>PERIDO DE LICENCIAMENTO</h4> <input type=tex" name=periodo size=100 maxlength=255 value="$periodo" style="height: 30px;">
+         <h4>PERIODO DE LICENCIAMENTO</h4> <input type=text name=periodo  size=100 maxlength=255 value="$periodo" style="height: 30px;">
          <h4>DEPARTAMENTO LOCAL</h4> <input type=text name=departamento size=100 maxlength=255 value="$departamento" style="height: 30px;">
          <h4>DENOMINACION PROGRAMA</h4> <input type=text name=denominacion size=100 maxlength=255 value="$denominacion" style="height: 30px;">
        <br>
 
       <input type=submit value="buscar">
       </form>
-      <h4><a href="index.html">regreso </a></h4>
-      $tabla
-
     </div>
+    $tabla
     <footer>
       <p>Grupo 2</p>
       <p>© UNSA-2022</p>
     </footer>
   </body>
- </html>
-ENDHTML
+</html>
+BLOCK

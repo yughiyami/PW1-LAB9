@@ -5,6 +5,14 @@
   html{
     height:96%;
   }
+  table,th,td{
+    width: 10%;
+    height: 10%;
+    border: 2px solid;
+    border-collapse: collapse;
+    background-color: #fafbfd;
+
+  }
   body{
     background-color:#ffcba8;
     min-height:100%;
@@ -12,10 +20,12 @@
     grid-template-areas:
     "main"
     "footer";
-    grid-template-rows: auto 100px;
-  
-    
+    grid-template-rows: auto 100px; }
+  a:link,a:visited,a:active{
+    text-decoration: none;
+    color: black;
   }
+
   .card{
     grid-area:main;
     width: 55%;
@@ -94,6 +104,7 @@
     color: #fafbfd;
     border-radius: 10px;
   }
+
   .boton:hover{
     box-shadow:0 1px 6px #20212447;
     width: 153px;
