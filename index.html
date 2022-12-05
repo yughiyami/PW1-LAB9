@@ -13,13 +13,14 @@
       <div>
       <h1 class="header">Buscador de universidades</h1>
       </div>
-      <form method=GET action="cgi-bin/script.pl">
-         <h4>NOMBRE DE LA UNIVERSIDAD</h4> <input type="text" name="nombre" size=100 maxlength=255 value="" style="height: 30px;">
-         <h4>PERIDO DE LICENCIAMENTO</h4> <input type="text" name="nombre" size=100 maxlength=255 value="" style="height: 30px;">
-         <h4>DEPARTAMENTO LOCAL</h4> <input type="text" name="nombre" size=100 maxlength=255 value="" style="height: 30px;">
-         <h4>DENOMINACION PROGRAMA</h4> <input type="text" name="nombre" size=100 maxlength=255 value="" style="height: 30px;">
-        
-      <input>type=submit value= "Buscar"</input>
+      <form method=GET action="cgi-bin/buscador.pl">
+         <h4>NOMBRE DE LA UNIVERSIDAD</h4> <input type=text name=nombre size=100 maxlength=255 value="" style="height: 30px;">
+         <h4>PERIODO DE LICENCIAMENTO</h4> <input type=text name=periodo  size=100 maxlength=255 value="" style="height: 30px;">
+         <h4>DEPARTAMENTO LOCAL</h4> <input type=text name=departamento size=100 maxlength=255 value="" style="height: 30px;">
+         <h4>DENOMINACION PROGRAMA</h4> <input type=text name=denominacion size=100 maxlength=255 value="" style="height: 30px;">
+       <br>
+
+      <input type=submit value="buscar">
       </form>
     </div>
     <footer>
