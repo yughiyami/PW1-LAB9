@@ -1,0 +1,109 @@
+*{
+    box-sizing: border-box;
+    font-family: "Montserrat","sans-serif";
+  }
+  html{
+    height:96%;
+  }
+  body{
+    background-color:#ffcba8;
+    min-height:100%;
+    display: grid;
+    grid-template-areas:
+    "main"
+    "footer";
+    grid-template-rows: auto 100px;
+  
+    
+  }
+  .card{
+    grid-area:main;
+    width: 55%;
+    margin:0 auto;
+    margin-top:50px;
+    margin-bottom:20px;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background-color:white;
+    border-radius:10px;
+    box-shadow:0 10px 10px #20212447;
+  }
+  .header{
+    display: flex;
+    padding-top:8%;
+    font-size:50px;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cajaTextoContenedor{
+    width: 340px;
+    height: 60px;
+    margin: 0 auto;
+    margin-bottom: 35px;
+    border: 1px solid #e1e2e6;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    border-radius:10px;
+  }
+  .texto{
+    text-align:center;
+    font-size:18px;
+    font-weight: bold;
+  }
+  .resultado{
+    color:#004f92;
+  }
+  .cajaTexto{
+    width: 250px;
+    height: 40px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    text-align: right;
+  }
+  .cajaTextoContenedor:hover{
+    box-shadow: 0 1px 6px #20212447;
+  }
+  .icon{
+    background-image: url("https://cdn-icons-png.flaticon.com/512/2891/2891382.png");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size:contain;
+    width: 25px;
+    height: 25px;
+    margin-right:20px;
+  }
+  
+  .botonContenedor{
+    width: 530px;
+    margin: 0 auto;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .boton{
+    width: 150px;
+    height: 36px;
+    background-color:#3e77b6;
+    border: none;
+    font-size: 25px;
+    color: #fafbfd;
+    border-radius: 10px;
+  }
+  .boton:hover{
+    box-shadow:0 1px 6px #20212447;
+    width: 153px;
+    font-size: 26px;
+  }
+  footer{
+    grid-area:footer;
+  }
+  footer p{
+    margin-top:20px;
+    text-align:center;
+    color:white;
+  }
